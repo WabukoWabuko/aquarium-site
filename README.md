@@ -31,3 +31,5 @@ Dive into a world of fish tanks and tools! This website combines a robust back-e
    cd aquarium-site
    
 - [x] **Phase 2: Back-End Development** - Models, admin panel, and API endpoints created.
+
+- [x] **Phase 3: Front-End Development** - React UI with Bootstrap, navigation, and 5/5-star reviews.
