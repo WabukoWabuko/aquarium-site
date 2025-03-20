@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Navbar, Nav, Modal, Form, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { useSwipeable } from 'react-swipeable';
+import axios from 'axios';
 
 function CustomNavbar() {
   const [showLogin, setShowLogin] = useState(false);
@@ -34,6 +34,7 @@ function CustomNavbar() {
       fetchCsrfToken();
       return;
     }
+
     try {
       const response = await axios.post(
         'http://localhost:8000/api/login/',
@@ -66,7 +67,7 @@ function CustomNavbar() {
   return (
     <>
       <Navbar bg="primary" variant="dark" expand="lg" expanded={expanded} onToggle={() => setExpanded(!expanded)}>
-        <Navbar.Brand as={Link} to="/">Aquarium Services</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">Topher's Aquarium Services</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" {...swipeHandlers}>
           <Nav className="mr-auto">
