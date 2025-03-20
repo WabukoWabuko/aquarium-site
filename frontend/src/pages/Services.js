@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { Helmet } from 'react-helmet-async';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import axios from 'axios';
 import Review from '../components/Review';
@@ -10,27 +11,41 @@ function Services() {
 
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/api/services/', { withCredentials: true })
-      .then(response => {
-        setServices(response.data);
-      })
+      .then(response => setServices(response.data))
       .catch(error => console.error(error));
   }, []);
 
   const addToRecentlyViewed = (service) => {
     const item = { id: service.id, name: service.name, price: service.price, type: 'service' };
     const stored = JSON.parse(localStorage.getItem('recentlyViewed') || '[]');
-    const updated = [item, ...stored.filter(i => i.id !== item.id)].slice(0, 5); // Keep top 5
+    const updated = [item, ...stored.filter(i => i.id !== item.id)].slice(0, 5);
     localStorage.setItem('recentlyViewed', JSON.stringify(updated));
   };
 
-  // Hardcoded recommendations (mock for now)
-  const recommendations = [
-    { id: 999, name: 'Tank Cleaning', price: 50 },
-    { id: 998, name: 'Water Testing', price: 20 },
-  ];
+  const schemaOrg = services.map(service => ({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": service.name,
+    "provider": {
+      "@type": "Organization",
+      "name": "Topher's Aquarium Services"
+    },
+    "description": service.description,
+    "offers": {
+      "@type": "Offer",
+      "price": service.price,
+      "priceCurrency": "USD"
+    }
+  }));
 
   return (
     <Container>
+      <Helmet>
+        <title>Topher's Aquarium Services - Our Services</title>
+        <meta name="description" content="Explore expert aquarium services including maintenance, repairs, and custom builds at Topher's Aquarium." />
+        <meta name="keywords" content="aquarium services, maintenance, repairs, custom builds, Topher" />
+        <script type="application/ld+json">{JSON.stringify(schemaOrg)}</script>
+      </Helmet>
       <h1>Our Services</h1>
       <Row>
         {services.map(service => (
@@ -54,23 +69,6 @@ function Services() {
             </Card>
           </Col>
         ))}
-      </Row>
-      <Row className="my-4">
-        <Col>
-          <h2>Recommended Services</h2>
-          <Row>
-            {recommendations.map(rec => (
-              <Col md={4} key={rec.id}>
-                <Card>
-                  <Card.Body>
-                    <Card.Title>{rec.name}</Card.Title>
-                    <Card.Text>Price: ${rec.price}</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </Col>
       </Row>
     </Container>
   );

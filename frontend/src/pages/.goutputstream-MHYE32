@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Carousel, Card } from 'react-bootstrap';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { Helmet } from 'react-helmet-async';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import axios from 'axios';
 
@@ -10,36 +9,18 @@ function Home() {
   const [recentlyViewed, setRecentlyViewed] = useState([]);
 
   useEffect(() => {
+    // Fetch reviews
     axios.get('http://127.0.0.1:8000/api/reviews/', { withCredentials: true })
       .then(response => setReviews(response.data.slice(0, 3)))
       .catch(error => console.error(error));
 
+    // Load recently viewed from local storage
     const stored = JSON.parse(localStorage.getItem('recentlyViewed') || '[]');
-    setRecentlyViewed(stored.slice(0, 3));
+    setRecentlyViewed(stored.slice(0, 3)); // Limit to 3 items
   }, []);
-
-  const schemaOrg = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Topher's Aquarium Services",
-    "url": "http://localhost:3000",
-    "logo": "http://localhost:3000/images/aquarium-banner1.jpg",
-    "description": "Your one-stop shop for aquarium services and products.",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+254-740-750-403", // Mock phone, replace with real
-      "contactType": "Customer Service"
-    }
-  };
 
   return (
     <Container fluid style={{ position: 'relative' }}>
-      <Helmet>
-        <title>Topher's Aquarium Services - Home</title>
-        <meta name="description" content="Welcome to Topher's Aquarium Services - your one-stop shop for custom tanks, fish, and maintenance!" />
-        <meta name="keywords" content="aquarium, custom tanks, fish, maintenance, Topher" />
-        <script type="application/ld+json">{JSON.stringify(schemaOrg)}</script>
-      </Helmet>
       <Carousel>
         <Carousel.Item>
           <LazyLoadImage
@@ -84,13 +65,13 @@ function Home() {
           <LazyLoadImage
             className="d-block w-100"
             src="/images/aquarium-banner4.jpg"
-            alt="Colorful Fish"
+            alt="Custom Aquarium Tank"
             effect="blur"
             height={400}
           />
           <Carousel.Caption>
-            <h1>🐠 Vibrant Aquatic Life</h1>
-            <p>Find the perfect fish for your tank.</p>
+            <h1>🌊 Welcome to Topher's Aquarium</h1>
+            <p>Explore our custom-built tanks!</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
@@ -146,6 +127,7 @@ function Home() {
             </Row>
           </Col>
         </Row>
+        {/* Animated bubbles */}
         <div className="bubble" style={{ left: '20%', top: '20%' }}></div>
         <div className="bubble" style={{ left: '40%', top: '60%' }}></div>
         <div className="bubble" style={{ left: '80%', top: '40%' }}></div>
@@ -153,5 +135,4 @@ function Home() {
     </Container>
   );
 }
-
 export default Home;
