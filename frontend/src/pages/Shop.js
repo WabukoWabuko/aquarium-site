@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Button, Form, Modal } from 'react-bootstrap';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import axios from 'axios';
 
 function Shop() {
@@ -99,7 +101,15 @@ function Shop() {
         {products.map(product => (
           <Col md={4} key={product.id}>
             <Card>
-              {product.image && <Card.Img variant="top" src={product.image} />}
+              {product.image && (
+                <LazyLoadImage
+                  variant="top"
+                  src={product.image}
+                  alt={product.name}
+                  effect="blur"
+                  height={200}
+                />
+              )}
               <Card.Body>
                 <Card.Title>{product.name}</Card.Title>
                 <Card.Text>{product.description}</Card.Text>
