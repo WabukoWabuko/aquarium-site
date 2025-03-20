@@ -34,6 +34,14 @@ function Shop() {
   const handleBuy = (product) => {
     setSelectedProduct(product);
     setShowModal(true);
+    addToRecentlyViewed(product);
+  };
+
+  const addToRecentlyViewed = (product) => {
+    const item = { id: product.id, name: product.name, price: product.price, type: 'product' };
+    const stored = JSON.parse(localStorage.getItem('recentlyViewed') || '[]');
+    const updated = [item, ...stored.filter(i => i.id !== item.id)].slice(0, 5); // Keep top 5
+    localStorage.setItem('recentlyViewed', JSON.stringify(updated));
   };
 
   const handlePayment = async (e) => {
@@ -93,6 +101,12 @@ function Shop() {
     }
   };
 
+  // Hardcoded recommendations (mock for now)
+  const recommendations = [
+    { id: 999, name: 'Fish Food', price: 10 },
+    { id: 998, name: 'Filter Pump', price: 30 },
+  ];
+
   return (
     <Container>
       <h1>Shop Aquariums</h1>
@@ -121,6 +135,23 @@ function Shop() {
             </Card>
           </Col>
         ))}
+      </Row>
+      <Row className="my-4">
+        <Col>
+          <h2>Recommended Products</h2>
+          <Row>
+            {recommendations.map(rec => (
+              <Col md={4} key={rec.id}>
+                <Card>
+                  <Card.Body>
+                    <Card.Title>{rec.name}</Card.Title>
+                    <Card.Text>Price: ${rec.price}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </Col>
       </Row>
 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
@@ -151,4 +182,5 @@ function Shop() {
     </Container>
   );
 }
+
 export default Shop;
