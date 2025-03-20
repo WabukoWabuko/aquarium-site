@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
+import { useDropzone } from 'react-dropzone';
 import axios from 'axios';
 
 function Review({ serviceId, productId }) {
@@ -7,6 +8,8 @@ function Review({ serviceId, productId }) {
   const [comment, setComment] = useState('');
   const [csrfToken, setCsrfToken] = useState(null);
   const [error, setError] = useState(null);
+  const [files, setFiles] = useState([]);
+  const [helpfulCount, setHelpfulCount] = useState(0);
 
   useEffect(() => {
     const fetchCsrfToken = async () => {
@@ -23,6 +26,16 @@ function Review({ serviceId, productId }) {
     };
     fetchCsrfToken();
   }, []);
+
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: 'image/*,video/*',
+    maxFiles: 3,
+    onDrop: acceptedFiles => {
+      setFiles(acceptedFiles.map(file => Object.assign(file, {
+        preview: URL.createObjectURL(file)
+      })));
+    }
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,6 +71,7 @@ function Review({ serviceId, productId }) {
       alert('Review submitted successfully!');
       setRating(0);
       setComment('');
+      setFiles([]);
       setError(null);
     } catch (err) {
       console.error('Review submission failed:', err);
@@ -102,8 +116,37 @@ function Review({ serviceId, productId }) {
           </Form.Group>
         </Col>
       </Row>
+      <Row>
+        <Col>
+          <div {...getRootProps()} style={{ border: '2px dashed #0077b6', padding: '20px', textAlign: 'center', margin: '10px 0' }}>
+            <input {...getInputProps()} />
+            <p>Drag & drop photos/videos here, or click to select (max 3)</p>
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+            {files.map(file => (
+              <div key={file.name} style={{ margin: '5px' }}>
+                {file.type.includes('image') ? (
+                  <img src={file.preview} alt="preview" style={{ width: '100px', height: '100px', objectFit: 'cover' }} />
+                ) : (
+                  <video src={file.preview} controls style={{ width: '100px', height: '100px' }} />
+                )}
+              </div>
+            ))}
+          </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <span style={{ color: '#28a745', fontWeight: 'bold' }}>✔ Verified Purchase</span> {/* Mock badge */}
+          <div style={{ marginTop: '10px' }}>
+            <Button variant="outline-primary" size="sm" onClick={() => setHelpfulCount(helpfulCount + 1)}>
+              Helpful ({helpfulCount})
+            </Button>
+          </div>
+        </Col>
+      </Row>
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <Button type="submit" variant="success" size="sm" disabled={!csrfToken}>
+      <Button type="submit" variant="success" size="sm" disabled={!csrfToken} style={{ marginTop: '10px' }}>
         {csrfToken ? 'Submit Review' : 'Loading...'}
       </Button>
     </Form>
