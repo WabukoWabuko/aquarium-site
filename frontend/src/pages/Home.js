@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Carousel, Card } from 'react-bootstrap';
-import axios from 'axios';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import axios from 'axios';
 
 function Home() {
   const [reviews, setReviews] = useState([]);
@@ -14,18 +14,18 @@ function Home() {
   }, []);
 
   return (
-    <Container fluid>
+    <Container fluid style={{ position: 'relative' }}>
       <Carousel>
         <Carousel.Item>
           <LazyLoadImage
             className="d-block w-100"
-            src="https://images.unsplash.com/photo-1570130811100-2ac024d53726?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400&q=80" // Replace with your branded image
-            alt="Aquarium Banner"
+            src="/images/aquarium-banner.jpg" // Replace with your branded image in public/images/
+            alt="Topher's Aquarium Banner"
             effect="blur"
-            height="400"
+            height={400}
           />
           <Carousel.Caption>
-            <h1>🌊 Welcome to Aquarium Services</h1>
+            <h1>🌊 Welcome to Topher's Aquarium</h1>
             <p>Your one-stop shop for all things aquatic!</p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -61,9 +61,10 @@ function Home() {
             </Row>
           </Col>
         </Row>
-        <div className="bubble" style={{ left: '20%' }}></div>
-        <div className="bubble" style={{ left: '40%' }}></div>
-        <div className="bubble" style={{ left: '60%' }}></div>
+        {/* Animated bubbles */}
+        <div className="bubble" style={{ left: '20%', top: '20%' }}></div>
+        <div className="bubble" style={{ left: '40%', top: '60%' }}></div>
+        <div className="bubble" style={{ left: '80%', top: '40%' }}></div>
       </Container>
     </Container>
   );
