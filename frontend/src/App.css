@@ -1,25 +1,83 @@
 body {
-  background-color: #e6f3ff; /* Light blue */
+  background-color: #e6f3ff;
   font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll on mobile */
 }
 .App {
   text-align: center;
-  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1;
 }
 h1 {
-  color: #0077b6; /* Deep blue */
+  color: #0077b6;
   font-family: 'Bubblegum Sans', cursive;
-}
-/* Bubble animation */
-@keyframes bubble {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(-100px); opacity: 0; }
 }
 .bubble {
   position: absolute;
-  width: 20px;
-  height: 20px;
   background: rgba(0, 119, 182, 0.5);
   border-radius: 50%;
   animation: bubble 5s infinite;
+}
+.bubble:nth-child(odd) {
+  width: 20px;
+  height: 20px;
+  animation-duration: 6s;
+}
+.bubble:nth-child(even) {
+  width: 15px;
+  height: 15px;
+  animation-duration: 4s;
+  animation-delay: 1s;
+}
+@keyframes bubble {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-150px); opacity: 0; }
+}
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 119, 182, 0.3); /* Aquatic shadow */
+  background: radial-gradient(circle, rgba(0, 119, 182, 0.1) 0%, transparent 70%); /* Ripple effect */
+}
+.btn-primary {
+  background-color: #00a8e8;
+  border: none;
+  padding: 10px 20px; /* Larger on mobile */
+}
+.btn-primary:hover {
+  background-color: #0077b6;
+}
+.admin-dashboard {
+  background: linear-gradient(to bottom, #e6f3ff, #b3d9ff);
+  min-height: 100vh;
+  padding: 20px;
+}
+.sidebar {
+  background-color: #0077b6;
+  color: white;
+  padding: 20px;
+}
+.sidebar .nav-link {
+  color: white;
+}
+.sidebar .nav-link.active {
+  background-color: #ff6f61;
+}
+@media (max-width: 768px) {
+  .btn-primary {
+    padding: 12px 24px; /* Even larger on small screens */
+    font-size: 1.1em;
+  }
+  .navbar-nav {
+    background-color: #0077b6; /* Match sidebar for mobile menu */
+    padding: 10px;
+  }
 }
