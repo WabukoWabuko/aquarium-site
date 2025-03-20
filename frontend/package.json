@@ -13,10 +13,13 @@
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
+    "react-dropzone": "^14.3.8",
     "react-lazy-load-image-component": "^1.6.3",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^7.4.0",
     "react-scripts": "5.0.1",
     "react-swipeable": "^7.0.2",
+    "redux": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
