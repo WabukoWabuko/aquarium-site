@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-u5vp=y^^1i2sg(h3f_*tq#qrub_teuy929ez2ws$k=s(2cxa)v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+]
 
 
 # Application definition
@@ -130,3 +133,26 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# REST Framework settings
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+}
+
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_COOKIE_SECURE = False  # For local dev
+CSRF_COOKIE_HTTPONLY = False
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+SESSION_COOKIE_SAMESITE = 'Lax'  # Default, but explicit
+CSRF_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_DOMAIN = 'localhost'  # Match front-end domain
