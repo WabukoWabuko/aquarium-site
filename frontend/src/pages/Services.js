@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import axios from 'axios';
-import Review from '../components/Review';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import axios from 'axios';
+import Review from '../components/Review';
 
 function Services() {
   const [services, setServices] = useState([]);
@@ -27,7 +27,7 @@ function Services() {
                   src={service.image}
                   alt={service.name}
                   effect="blur"
-                  height="200" // Adjust based on your design
+                  height={200}
                 />
               )}
               <Card.Body>
