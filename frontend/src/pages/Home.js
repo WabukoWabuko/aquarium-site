@@ -23,11 +23,11 @@ function Home() {
     "@type": "Organization",
     "name": "Topher's Aquarium Services",
     "url": "http://localhost:3000",
-    "logo": "http://localhost:3000/images/aquarium-banner1.jpg",
+    "logo": "http://localhost:3000/images/aquarium-banner-1-custom-tank.jpg",
     "description": "Your one-stop shop for aquarium services and products.",
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+254-740-750-403", // Mock phone, replace with real
+      "telephone": "+254-700-123-456",
       "contactType": "Customer Service"
     }
   };
@@ -84,13 +84,13 @@ function Home() {
           <LazyLoadImage
             className="d-block w-100"
             src="/images/aquarium-banner4.jpg"
-            alt="Colorful Fish"
+            alt="Custom Aquarium Tank"
             effect="blur"
             height={400}
           />
           <Carousel.Caption>
-            <h1>🐠 Vibrant Aquatic Life</h1>
-            <p>Find the perfect fish for your tank.</p>
+            <h1>🌊 Welcome to Topher's Aquarium</h1>
+            <p>Explore our custom-built tanks!</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
@@ -102,6 +102,36 @@ function Home() {
               Topher brings years of passion and expertise to aquarium care.
               From repairs to custom builds, we’ve got you covered!
             </p>
+          </Col>
+        </Row>
+        <Row className="why-choose-us">
+          <Col>
+            <h3>Why Choose Us?</h3>
+            <Row>
+              <Col md={4}>
+                <p>🌟 Expert Craftsmanship</p>
+              </Col>
+              <Col md={4}>
+                <p>🐟 Premium Aquatic Life</p>
+              </Col>
+              <Col md={4}>
+                <p>🛠️ Reliable Support</p>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+        <Row className="my-4">
+          <Col>
+            <h2>Find Us</h2>
+            <div className="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509371!2d144.9537363153167!3d-37.81627997975146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d8f5d6f5e5e0!2sMelbourne%20Aquarium!5e0!3m2!1sen!2sus!4v1634567890123!5m2!1sen!2sus"
+                title="Topher's Aquarium Location"
+                allowFullScreen=""
+                loading="lazy"
+              ></iframe>
+            </div>
+            <p>Visit us in Melbourne or contact us for nationwide service!</p>
           </Col>
         </Row>
         <Row className="my-4">
@@ -146,6 +176,17 @@ function Home() {
             </Row>
           </Col>
         </Row>
+        <Row className="trust-section my-4">
+          <Col>
+            <h2>Trusted by Experts</h2>
+            <div>
+              <img src="/images/trust-logo-1.png" alt="Aquarium Expert" className="trust-logo" />
+              <img src="/images/trust-logo-2.png" alt="Fish Care Pro" className="trust-logo" />
+              <img src="/images/trust-logo-3.png" alt="Marine Life Assoc" className="trust-logo" />
+            </div>
+            <p>Join thousands of satisfied customers and industry leaders!</p>
+          </Col>
+        </Row>
         <div className="bubble" style={{ left: '20%', top: '20%' }}></div>
         <div className="bubble" style={{ left: '40%', top: '60%' }}></div>
         <div className="bubble" style={{ left: '80%', top: '40%' }}></div>
@@ -153,5 +194,4 @@ function Home() {
     </Container>
   );
 }
-
 export default Home;
