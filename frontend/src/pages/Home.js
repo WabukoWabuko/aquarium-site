@@ -125,13 +125,13 @@ function Home() {
             <h2>Find Us</h2>
             <div className="map-container">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509371!2d144.9537363153167!3d-37.81627997975146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d8f5d6f5e5e0!2sMelbourne%20Aquarium!5e0!3m2!1sen!2sus!4v1634567890123!5m2!1sen!2sus"
-                title="Topher's Aquarium Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.815843967964!2d36.81197831475452!3d-1.2733746999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f172e7e6e4c33%3A0x6ebeb971d7d4f8b!2sNairobi%20National%20Museum!5e0!3m2!1sen!2ske!4v1698765432109!5m2!1sen!2ske"
+                title="Topher's Aquarium Location - Nairobi"
                 allowFullScreen=""
                 loading="lazy"
               ></iframe>
             </div>
-            <p>Visit us in Melbourne or contact us for nationwide service!</p>
+            <p>Visit us in Nairobi, Kenya or contact us for nationwide service!</p>
           </Col>
         </Row>
         <Row className="my-4">
@@ -180,7 +180,7 @@ function Home() {
           <Col>
             <h2>Trusted by Experts</h2>
             <div>
-              <img src="/images/trust-logo-1.png" alt="Aquarium Expert" className="trust-logo" />
+              <img src="/images/trust-logo-1.jpg" alt="Aquarium Expert" className="trust-logo" />
               <img src="/images/trust-logo-2.png" alt="Fish Care Pro" className="trust-logo" />
               <img src="/images/trust-logo-3.png" alt="Marine Life Assoc" className="trust-logo" />
             </div>
