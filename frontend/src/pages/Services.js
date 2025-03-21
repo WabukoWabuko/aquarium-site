@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Helmet } from 'react-helmet-async';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -69,6 +69,12 @@ function Services() {
             </Card>
           </Col>
         ))}
+      </Row>
+      <Row className="my-4">
+        <Col>
+          <h2>Service Area</h2>
+          <p>We serve nationwide! Check our <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">coverage map</a> for details.</p>
+        </Col>
       </Row>
     </Container>
   );
