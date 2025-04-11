@@ -70,6 +70,12 @@ function Services() {
           </Col>
         ))}
       </Row>
+      <Row className="my-4">
+        <Col>
+          <h2>Service Area</h2>
+          <p>We serve nationwide! Check our <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">coverage map</a> for details.</p>
+        </Col>
+      </Row>
     </Container>
   );
 }

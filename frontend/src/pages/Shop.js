@@ -126,6 +126,12 @@ function Shop() {
       </Helmet>
       <h1>Shop Aquariums</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
+      <Row className="why-choose-us">
+        <Col>
+          <h3>Shipping Info</h3>
+          <p>🚚 Fast Nationwide Shipping | 📦 Secure Packaging | ✅ Satisfaction Guaranteed</p>
+        </Col>
+      </Row>
       <Row>
         {products.map(product => (
           <Col md={4} key={product.id}>
@@ -151,7 +157,6 @@ function Shop() {
           </Col>
         ))}
       </Row>
-
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Checkout</Modal.Title>

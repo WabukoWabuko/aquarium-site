@@ -3,7 +3,7 @@ body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+  overflow-x: hidden;
 }
 .App {
   text-align: center;
@@ -44,13 +44,13 @@ h1 {
 }
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 119, 182, 0.3); /* Aquatic shadow */
-  background: radial-gradient(circle, rgba(0, 119, 182, 0.1) 0%, transparent 70%); /* Ripple effect */
+  box-shadow: 0 4px 12px rgba(0, 119, 182, 0.3);
+  background: radial-gradient(circle, rgba(0, 119, 182, 0.1) 0%, transparent 70%);
 }
 .btn-primary {
   background-color: #00a8e8;
   border: none;
-  padding: 10px 20px; /* Larger on mobile */
+  padding: 10px 20px;
 }
 .btn-primary:hover {
   background-color: #0077b6;
@@ -71,13 +71,56 @@ h1 {
 .sidebar .nav-link.active {
   background-color: #ff6f61;
 }
+.map-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  margin: 20px 0;
+}
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #0077b6;
+  border-radius: 8px;
+}
+.trust-section {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+}
+.trust-logo {
+  width: 100px;
+  margin: 10px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+.trust-logo:hover {
+  opacity: 1;
+}
+.why-choose-us {
+  background: linear-gradient(to right, #00a8e8, #0077b6);
+  color: white;
+  padding: 30px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+.why-choose-us h3 {
+  margin-bottom: 20px;
+}
 @media (max-width: 768px) {
   .btn-primary {
-    padding: 12px 24px; /* Even larger on small screens */
+    padding: 12px 24px;
     font-size: 1.1em;
   }
   .navbar-nav {
-    background-color: #0077b6; /* Match sidebar for mobile menu */
+    background-color: #0077b6;
     padding: 10px;
+  }
+  .map-container {
+    padding-bottom: 75%; /* Adjust for mobile */
   }
 }
