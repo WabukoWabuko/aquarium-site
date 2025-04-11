@@ -44,7 +44,7 @@ function Home() {
         <Carousel.Item>
           <LazyLoadImage
             className="d-block w-100"
-            src="/images/aquarium-banner1.jpg"
+            src={`${process.env.PUBLIC_URL}/images/aquarium-banner1.jpg`} // src="/images/aquarium-banner1.jpg"
             alt="Custom Aquarium Tank"
             effect="blur"
             height={400}
@@ -57,7 +57,7 @@ function Home() {
         <Carousel.Item>
           <LazyLoadImage
             className="d-block w-100"
-            src="/images/aquarium-banner2.jpg"
+            src={`${process.env.PUBLIC_URL}/images/aquarium-banner2.jpg` // src="/images/aquarium-banner2.jpg"
             alt="Colorful Fish"
             effect="blur"
             height={400}
@@ -70,7 +70,7 @@ function Home() {
         <Carousel.Item>
           <LazyLoadImage
             className="d-block w-100"
-            src="/images/aquarium-banner3.jpg"
+            src={`${process.env.PUBLIC_URL}/images/aquarium-banner3.jpg` // src="/images/aquarium-banner3.jpg"
             alt="Aquarium Maintenance"
             effect="blur"
             height={400}
@@ -83,7 +83,7 @@ function Home() {
         <Carousel.Item>
           <LazyLoadImage
             className="d-block w-100"
-            src="/images/aquarium-banner4.jpg"
+            src={`${process.env.PUBLIC_URL}/images/aquarium-banner1.jpg` // src="/images/aquarium-banner4.jpg"
             alt="Custom Aquarium Tank"
             effect="blur"
             height={400}
@@ -180,9 +180,12 @@ function Home() {
           <Col>
             <h2>Trusted by Experts</h2>
             <div>
-              <img src="/images/trust-logo-1.jpg" alt="Aquarium Expert" className="trust-logo" />
-              <img src="/images/trust-logo-2.png" alt="Fish Care Pro" className="trust-logo" />
-              <img src="/images/trust-logo-3.png" alt="Marine Life Assoc" className="trust-logo" />
+              <img src={`${process.env.PUBLIC_URL}/images/trust-logo-1.jpg`} alt="Aquarium Expert" className="trust-logo" />
+              <img src={`${process.env.PUBLIC_URL}/images/trust-logo-1.jpg`} alt="Fish Care Pro" className="trust-logo" />
+              <img src={`${process.env.PUBLIC_URL}/images/trust-logo-1.jpg`} alt="Marine Life Assoc" className="trust-logo" />
+              /* <img src="/images/trust-logo-1.jpg"  />
+              <img src="/images/trust-logo-2.png"  />
+              <img src="/images/trust-logo-3.png"  /> */
             </div>
             <p>Join thousands of satisfied customers and industry leaders!</p>
           </Col>
