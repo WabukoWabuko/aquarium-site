@@ -57,7 +57,7 @@ function Home() {
         <Carousel.Item>
           <LazyLoadImage
             className="d-block w-100"
-            src={`${process.env.PUBLIC_URL}/images/aquarium-banner2.jpg` // src="/images/aquarium-banner2.jpg"
+            src={`${process.env.PUBLIC_URL}/images/aquarium-banner2.jpg`} // src="/images/aquarium-banner2.jpg"
             alt="Colorful Fish"
             effect="blur"
             height={400}
@@ -70,7 +70,7 @@ function Home() {
         <Carousel.Item>
           <LazyLoadImage
             className="d-block w-100"
-            src={`${process.env.PUBLIC_URL}/images/aquarium-banner3.jpg` // src="/images/aquarium-banner3.jpg"
+            src={`${process.env.PUBLIC_URL}/images/aquarium-banner3.jpg`} // src="/images/aquarium-banner3.jpg"
             alt="Aquarium Maintenance"
             effect="blur"
             height={400}
@@ -83,7 +83,7 @@ function Home() {
         <Carousel.Item>
           <LazyLoadImage
             className="d-block w-100"
-            src={`${process.env.PUBLIC_URL}/images/aquarium-banner1.jpg` // src="/images/aquarium-banner4.jpg"
+            src={`${process.env.PUBLIC_URL}/images/aquarium-banner4.jpg`} // src="/images/aquarium-banner4.jpg"
             alt="Custom Aquarium Tank"
             effect="blur"
             height={400}
